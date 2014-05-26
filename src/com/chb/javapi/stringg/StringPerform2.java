@@ -12,7 +12,7 @@ public class StringPerform2 {
 		String orgStr = null;
 		StringBuffer sb = new StringBuffer();
 
-		for (int i=0; i<1000; i++) {
+		for (int i = 0; i < 1000; i++) {
 			sb.append(i);
 			sb.append(";");
 		}
@@ -20,40 +20,41 @@ public class StringPerform2 {
 
 		Long begin = System.currentTimeMillis();
 		System.out.println("begin at:\t" + begin);
-		for(int i=0; i<times; i++) {
+		for (int i = 0; i < times; i++) {
 			orgStr.split(";");
 		}
-		Long end  = System.currentTimeMillis();
+		Long end = System.currentTimeMillis();
 		System.out.println("end at:\t" + end);
 		System.out.println("split spend: " + (end - begin));
 
 		StringTokenizer st = new StringTokenizer(orgStr, ";");
 		begin = System.currentTimeMillis();
 		System.out.println("begin at:\t" + begin);
-		for(int i=0; i<times; i++) {
+		for (int i = 0; i < times; i++) {
 			while (st.hasMoreTokens()) {
 				st.nextToken();
 			}
 			st = new StringTokenizer(orgStr, ";");
 		}
-		end  = System.currentTimeMillis();
+		end = System.currentTimeMillis();
 		System.out.println("end at:\t" + end);
 		System.out.println("split spend: " + (end - begin));
 
 		String tmp = orgStr;
 		begin = System.currentTimeMillis();
 		System.out.println("begin at:\t" + begin);
-		for (int i=0; i<times; i++) {
+		for (int i = 0; i < times; i++) {
 			while (true) {
 				String splitStr = null;
 				int j = tmp.indexOf(';');
-				if (j<0) break;;
-				 splitStr = tmp.substring(0, j);
-				tmp = tmp.substring(j+1);
+				if (j < 0) break;
+				;
+				splitStr = tmp.substring(0, j);
+				tmp = tmp.substring(j + 1);
 			}
 			tmp = orgStr;
 		}
-		end  = System.currentTimeMillis();
+		end = System.currentTimeMillis();
 		System.out.println("end at:\t" + end);
 		System.out.println("split spend: " + (end - begin));
 	}
